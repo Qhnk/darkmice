@@ -6,9 +6,9 @@ package TFMTools
    import tribulle.*;
    import flash.geom.*;
    import flash.display.*;
-   import flash.system.ApplicationDomain;
    import TFM.network.*;
    import wreft.aux.*;
+   import flash.system.ApplicationDomain;
    
    public class PacketParser extends MovieClip
    {
@@ -59,6 +59,7 @@ package TFMTools
             {
                delete PacketParser.joueursVisibilite[param1.toLowerCase()];
                true;
+               true;
             }
             else
             {
@@ -78,10 +79,12 @@ package TFMTools
          Utils.TFMInstance._I.alpha = Utils.TFMInstance._I.alpha == 1?0:1;
       }
       
+	  
+	  
       public static function activateEditeurSansLimite() : void
       {
          PacketParser.editeurSansLimite = !PacketParser.editeurSansLimite;
-         TFMData.MapEditeurClass[TFMData.ActivateEditeurSansLimite](PacketParser.editeurSansLimite);
+         TFMData.MapEditeurClass(PacketParser.editeurSansLimite);
          ProxyTribulle.x_messageChat("<R>Editeur sans limité => " + _SafeStr_12116.CoerceString(PacketParser.editeurSansLimite) + "</R>");
       }
       
@@ -155,8 +158,13 @@ package TFMTools
          {
             _loc3_ = param1.numChildren;
             _loc4_ = -1;
-            while(++_loc4_ < _loc3_)
+            while(true)
             {
+               _loc4_++;
+               if(_loc4_ >= _loc3_)
+               {
+                  break;
+               }
                _loc5_ = param1.getChildAt(_loc4_);
                _loc6_ = _loc5_.name;
                if(_loc6_)
@@ -205,10 +213,15 @@ package TFMTools
          {
             return;
          }
-         var _loc6_:int = param1.numChildren;
-         var _loc7_:int = -1;
-         while(++_loc7_ < _loc6_)
+         var _loc6_:* = param1.numChildren;
+         var _loc7_:* = -1;
+         while(true)
          {
+            _loc7_++;
+            if(_loc7_ >= _loc6_)
+            {
+               break;
+            }
             _loc3_ = param1.getChildAt(_loc7_);
             _loc4_ = _loc3_.name;
             if(_loc4_)
@@ -237,10 +250,15 @@ package TFMTools
          var _loc10_:* = 0;
          var _loc11_:* = 0;
          var _loc12_:* = param3?param3.length:0;
-         var _loc13_:int = param1.numChildren;
-         var _loc14_:int = -1;
-         while(++_loc14_ < _loc13_)
+         var _loc13_:* = param1.numChildren;
+         var _loc14_:* = -1;
+         while(true)
          {
+            _loc14_++;
+            if(_loc14_ >= _loc13_)
+            {
+               break;
+            }
             _loc5_ = param1.getChildAt(_loc14_);
             _loc6_ = _loc5_.name;
             if(_loc6_)
@@ -292,10 +310,15 @@ package TFMTools
          var _loc8_:* = 0;
          var _loc9_:* = 0;
          var _loc10_:* = 0;
-         var _loc11_:int = param1.numChildren;
-         var _loc12_:int = -1;
-         while(++_loc12_ < _loc11_)
+         var _loc11_:* = param1.numChildren;
+         var _loc12_:* = -1;
+         while(true)
          {
+            _loc12_++;
+            if(_loc12_ >= _loc11_)
+            {
+               break;
+            }
             _loc5_ = param1.getChildAt(_loc12_) as MovieClip;
             if(_loc5_)
             {
@@ -326,19 +349,245 @@ package TFMTools
       
       public static function RecupAnimation(param1:int, param2:int, param3:int, param4:String, param5:String, param6:Vector.<int>, param7:Boolean = false) : MovieClip
       {
-         /*
-          * Decompilation error
-          * Code may be obfuscated
-          * Deobfuscation is activated but decompilation still failed. If the file is NOT obfuscated, disable "Automatic deobfuscation" for better results.
-          * Error type: TranslateException
-          */
-         throw new flash.errors.IllegalOperationError("Not decompiled due to error");
+         var _loc8_:Sprite = null;
+         var _loc9_:* = 0;
+         var _loc10_:String = null;
+         var _loc11_:String = null;
+         var _loc12_:MovieClip = null;
+         var _loc13_:MovieClip = null;
+         var _loc14_:* = 0;
+         var _loc15_:* = 0;
+         var _loc16_:Sprite = null;
+         var _loc17_:* = 0;
+         var _loc18_:* = 0;
+         var _loc19_:* = 0;
+         var _loc20_:* = 0;
+         var _loc21_:* = 0;
+         var _loc22_:Vector.<int> = null;
+         var _loc23_:* = 0;
+         var _loc24_:* = 0;
+         var _loc25_:* = 0;
+         var _loc26_:String = null;
+         var _loc27_:Array = null;
+         var _loc28_:* = 0;
+         var _loc29_:Array = null;
+         var _loc30_:MovieClip = null;
+         var _loc31_:Array = null;
+         var _loc32_:MovieClip = null;
+         var _loc33_:MovieClip = null;
+         var _loc34_:String = null;
+         var _loc35_:* = false;
+         var _loc36_:* = false;
+         var _loc37_:* = 0;
+         var _loc38_:Array = null;
+         var _loc39_:MovieClip = null;
+         var _loc40_:DisplayObjectContainer = null;
+         var _loc41_:Point = null;
+         var _loc42_:Array = new Array();
+         if(!TFMData.Initialized)
+         {
+            PacketParser.InitializeDataClasses();
+         }
+         if(2 == param1)
+         {
+            var param2:* = 40;
+            var param3:* = 1;
+         }
+         var _loc45_:ApplicationDomain = TFMData.ResourcesSpriteClass[TFMData.AppDomainDictionary][param1];
+         if(!_loc45_.hasDefinition(param4))
+         {
+            return new MovieClip();
+         }
+         var _loc46_:MovieClip = new (_loc45_.getDefinition(param4) as Class)();
+         if(!_loc46_)
+         {
+            return new MovieClip();
+         }
+         var _loc47_:int = param5.indexOf(";");
+         if(_loc47_ != -1)
+         {
+            var param5:String = param5.split(";")[1];
+         }
+         var _loc49_:Array = param5?param5.split(","):null;
+         var _loc50_:* = _loc46_.numChildren;
+         var _loc51_:* = -1;
+         while(true)
+         {
+            _loc51_++;
+            if(_loc51_ >= _loc50_)
+            {
+               break;
+            }
+            _loc8_ = _loc46_.getChildAt(_loc51_) as Sprite;
+            if(_loc8_)
+            {
+               _loc9_ = param6?param6.length:0;
+               _loc10_ = _loc8_.name;
+               if(_loc10_.indexOf("instance") != 0)
+               {
+                  if(param3 == 3 && !(_loc10_ == "Boule_1") && !(_loc10_ == "Tete_1"))
+                  {
+                     _loc11_ = "_" + _loc10_ + "_" + param2 + "_2";
+                  }
+                  else
+                  {
+                     _loc11_ = "_" + _loc10_ + "_" + param2 + "_" + param3;
+                  }
+                  if(TFMData.ResourcesSpriteClass[TFMData.CurrentApplicationDomain].hasDefinition(_loc11_))
+                  {
+                     _loc12_ = new (TFMData.ResourcesSpriteClass[TFMData.CurrentApplicationDomain].getDefinition(_loc11_) as Class)();
+                     if(_loc12_)
+                     {
+                        _loc8_.addChild(_loc12_);
+                        if(param7 && _loc10_ == "CuisseD_1")
+                        {
+                           _loc13_ = TFMData.SWFLoaderClass("$AileChamane");
+                           _loc13_.x = 10;
+                           _loc13_.y = -8;
+                           _loc13_.scaleX = 0.9;
+                           _loc13_.scaleY = 0.9;
+                           _loc13_.rotation = -10;
+                           _loc8_.addChild(_loc13_);
+                           if(1 < _loc9_)
+                           {
+                              _loc18_ = param6[1];
+                              _loc19_ = _loc18_ >> 16 & 255;
+                              _loc20_ = _loc18_ >> 8 & 255;
+                              _loc21_ = _loc18_ & 255;
+                              MovieClip(_loc13_["c1"]).transform.colorTransform = new ColorTransform(_loc19_ / 128,_loc20_ / 128,_loc21_ / 128);
+                           }
+                        }
+                        PacketParser.RecupChamaneCustomization(_loc12_,_loc42_,param6,0);
+                     }
+                  }
+               }
+               if(param5)
+               {
+                  _loc22_ = TFMData.ResourcesSpriteClass[TFMData.LOOK_SLOT][_loc10_];
+                  if(_loc22_)
+                  {
+                     _loc23_ = _loc22_.length;
+                     _loc24_ = -1;
+                     while(true)
+                     {
+                        _loc24_++;
+                        if(_loc24_ >= _loc23_)
+                        {
+                           break;
+                        }
+                        _loc25_ = _loc22_[_loc24_];
+                        _loc26_ = _loc49_[_loc25_];
+                        _loc27_ = null;
+                        if((_loc26_) && !(_loc26_.indexOf("_") == -1))
+                        {
+                           _loc29_ = _loc26_.split("_");
+                           _loc28_ = _SafeStr_12116.CoerceInteger(_loc29_[0]);
+                           _loc27_ = _loc29_[1].split("+");
+                        }
+                        else
+                        {
+                           _loc28_ = _SafeStr_12116.CoerceInteger(_loc26_);
+                        }
+                        if(_loc28_)
+                        {
+                           _loc30_ = TFMData.ResourcesSpriteClass(_loc25_,_loc28_,_loc27_,true);
+                           if(_loc28_ > 99)
+                           {
+                              _loc30_.name = "Costume_" + (_loc25_ * 10000 + _loc28_ + 10000);
+                           }
+                           else
+                           {
+                              _loc30_.name = "Costume_" + (_loc25_ * 100 + _loc28_);
+                           }
+                           if(_loc30_)
+                           {
+                              if(_loc25_ == 5 || _loc25_ == 4)
+                              {
+                                 _loc8_.addChildAt(_loc30_,1);
+                              }
+                              else if(6 == _loc25_)
+                              {
+                                 if(_loc8_.numChildren)
+                                 {
+                                    _loc8_.removeChildAt(0);
+                                 }
+                                 _loc8_.addChild(_loc30_);
+                              }
+                              else
+                              {
+                                 _loc8_.addChild(_loc30_);
+                              }
+                              
+                           }
+                           if(_loc30_["_accessoires"])
+                           {
+                              _loc42_ = _loc42_.concat(_loc30_["_accessoires"]);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+         if(_loc42_.length)
+         {
+            _loc51_ = 0;
+            while(_loc51_ < _loc42_.length)
+            {
+               _loc33_ = _loc42_[_loc51_];
+               _loc34_ = _loc33_.name.substr(5);
+               _loc35_ = _loc34_.substr(0,6) == "behind";
+               _loc36_ = _loc34_.substr(0,5) == "first";
+               if(_loc35_)
+               {
+                  _loc34_ = _loc34_.substr(7);
+               }
+               else if(_loc36_)
+               {
+                  _loc34_ = _loc34_.substr(6);
+               }
+               
+               _loc37_ = _SafeStr_12116.CoerceInteger(_loc34_);
+               _loc38_ = Utils.PARTS_SLOT[_loc37_];
+               if(_loc38_)
+               {
+                  _loc28_ = 0;
+                  while(_loc28_ < _loc38_.length)
+                  {
+                     _loc39_ = _loc46_[_loc38_[_loc28_]];
+                     if(_loc39_)
+                     {
+                        _loc40_ = _loc33_.parent;
+                        _loc41_ = _loc39_.globalToLocal(_loc40_.localToGlobal(new Point(_loc33_.x,_loc33_.y)));
+                        _loc33_.x = _loc41_.x;
+                        _loc33_.y = _loc41_.y;
+                        if(_loc35_)
+                        {
+                           _loc39_.addChildAt(_loc33_,0);
+                        }
+                        else if(_loc36_)
+                        {
+                           _loc39_.addChildAt(_loc33_,1);
+                        }
+                        else
+                        {
+                           _loc39_.addChild(_loc33_);
+                        }
+                        
+                     }
+                     _loc28_++;
+                  }
+               }
+               _loc51_++;
+            }
+         }
+         return _loc46_;
       }
       
       public static function RecupAnimVecto(param1:String, param2:Boolean, param3:Boolean = false, param4:* = null) : MovieClip
       {
          var _loc5_:* = param4 != null?param4:Utils.TFMInstance[TFMData.ClipJoueur][TFMData.AnimGetSpritesInstance];
-         var _loc6_:int = _loc5_[TFMData.IndianaMouseSet]?3:param1 == "AnimDanse2"?4:1;
+         var _loc6_:* = _loc5_[TFMData.IndianaMouseSet]?3:param1 == "AnimDanse2"?4:1;
          var _loc7_:Array = Utils.CUSTOM_ANIMATIONS[_loc5_[TFMData.PlayerFur]];
          if(_loc7_ != null)
          {
@@ -348,36 +597,37 @@ package TFMTools
                var param1:String = param1 + _loc7_[1];
             }
          }
-         var _loc8_:MovieClip = PacketParser.RecupAnimation(_loc6_,_loc5_[TFMData.PlayerFur],_loc5_[TFMData.PlayerSkinMode],param1,_loc5_[TFMData.PlayerLook],_loc5_[TFMData.PlayerCouleurs],param3);
-         _loc8_.name = param1;
-         _loc8_.y = 1;
-         if(!_loc8_)
+         var _loc9_:MovieClip = PacketParser.RecupAnimation(_loc6_,_loc5_[TFMData.PlayerFur],_loc5_[TFMData.PlayerSkinMode],param1,_loc5_[TFMData.PlayerLook],_loc5_[TFMData.PlayerCouleurs],param3);
+         _loc9_.name = param1;
+         _loc9_.y = 1;
+         if(!_loc9_)
          {
-            _loc8_ = new MovieClip();
+            _loc9_ = new MovieClip();
          }
          if(param2)
          {
-            if(_loc8_.ClipGrosse)
+            if(_loc9_.ClipGrosse)
             {
-               _loc8_.ClipGrosse.addChild(TFMData.AnimResourcesClass[TFMData.RecupClipFromage]());
+               _loc9_.ClipGrosse.addChild(TFMData.AnimResourcesClass());
             }
          }
          if(_loc5_[TFMData.PlayerSkinMode] != 1)
          {
-            _loc8_.scaleX = TFMData.ResourcesAuxiliaryClass[TFMData.ResourcesAuxiliaryInstance][TFMData.ResourcesAuxiliaryScaleMultiplier];
-            _loc8_.scaleY = TFMData.ResourcesAuxiliaryClass[TFMData.ResourcesAuxiliaryInstance][TFMData.ResourcesAuxiliaryScaleMultiplier];
+            _loc9_.scaleX = TFMData.ResourcesAuxiliaryClass[TFMData.ResourcesAuxiliaryInstance][TFMData.ResourcesAuxiliaryScaleMultiplier];
+            _loc9_.scaleY = TFMData.ResourcesAuxiliaryClass[TFMData.ResourcesAuxiliaryInstance][TFMData.ResourcesAuxiliaryScaleMultiplier];
          }
          else
          {
-            _loc8_.scaleX = _loc5_[TFMData.AnimResourcesScaleMultiplier];
-            _loc8_.scaleY = _loc5_[TFMData.AnimResourcesScaleMultiplier];
+            _loc9_.scaleX = _loc5_[TFMData.AnimResourcesScaleMultiplier];
+            _loc9_.scaleY = _loc5_[TFMData.AnimResourcesScaleMultiplier];
          }
-         _loc8_.gotoAndStop(1);
-         return _loc8_;
+         _loc9_.gotoAndStop(1);
+         return _loc9_;
       }
       
       public static function Handle(param1:int, param2:int, param3:ByteArray) : Boolean
       {
+         var param3:ByteArray = param3;
          var joueur:Object = null;
          var swfPath:String = null;
          var setIndiana:Boolean = false;
@@ -418,17 +668,17 @@ package TFMTools
                }
                for each(joueur in Utils.TFMInstance[TFMData.ListeJoueur])
                {
-                  joueur[TFMData.AnimIndianaMouseInit](false);
+                  joueur(false);
                }
-               TFMData.MapEditeurClass[TFMData.ActivateEditeurSansLimite](true);
+               TFMData.MapEditeurClass(true);
             }
          }
          else if(C == 26)
          {
             if(CC == 2)
             {
-               TFMData.CommandManagerClass1[TFMData.CommandManagerInstance][TFMData.CommandManagerAddCommand]("onlyme",PacketParser.onlymeHandler);
-               TFMData.CommandManagerClass1[TFMData.CommandManagerInstance][TFMData.CommandManagerAddCommand]("x_i_vis",PacketParser.interfaceVisibiliteHandler);
+               TFMData.CommandManagerClass1[TFMData.CommandManagerInstance]("antlag1",PacketParser.onlymeHandler);
+               TFMData.CommandManagerClass1[TFMData.CommandManagerInstance]("antlag2",PacketParser.interfaceVisibiliteHandler);
             }
             else if(CC == 3)
             {
@@ -486,16 +736,16 @@ package TFMTools
             if(CC == 1)
             {
                swfPath = data.readUTF();
-               TFMData.SWFLoaderClass[TFMData.SWFLoaderMethod](swfPath);
+               TFMData.SWFLoaderClass(swfPath);
                return true;
             }
             if(CC == 2)
             {
                setIndiana = data.readBoolean();
-               TFMData.AnimResourcesClass[TFMData.AnimResourcesInit]();
+               TFMData.AnimResourcesClass();
                for each(joueur in Utils.TFMInstance[TFMData.ListeJoueur])
                {
-                  joueur[TFMData.AnimIndianaMouseInit](setIndiana);
+                  joueur(setIndiana);
                }
                return true;
             }
@@ -527,8 +777,8 @@ package TFMTools
                         animName = data.readUTF();
                         animNameChange = data.readUTF();
                         animIndex = data.readByte();
-                        animEventDispatcher = animIndex != -1?Utils.GetAnimResource(animIndex,animNameChange,usePlayerLook?parseInt(splitedLook[0]):-1,usePlayerLook?splitedLook[1]:"0",playerAnimationMode,false,playerMouseColor,playerShamanColor):new TFMData.EventDispatcherClass(new TFMData.ObjectMovieClip1Class(TFMData.SWFLoaderClass[TFMData.GetResourceClass](animNameChange),0),true);
-                        animEventDispatcherCheese = animIndex != -1?Utils.GetAnimResource(animIndex,animNameChange,usePlayerLook?parseInt(splitedLook[0]):-1,usePlayerLook?splitedLook[1]:"0",playerAnimationMode,true,playerMouseColor,playerShamanColor):new TFMData.EventDispatcherClass(new TFMData.ObjectMovieClip1Class(TFMData.SWFLoaderClass[TFMData.GetResourceClass](animNameChange),0),true);
+                        animEventDispatcher = animIndex != -1?Utils.GetAnimResource(animIndex,animNameChange,usePlayerLook?parseInt(splitedLook[0]):-1,usePlayerLook?splitedLook[1]:"0",playerAnimationMode,false,playerMouseColor,playerShamanColor):new TFMData.EventDispatcherClass(new TFMData.ObjectMovieClip1Class(TFMData.SWFLoaderClass(animNameChange),0),true);
+                        animEventDispatcherCheese = animIndex != -1?Utils.GetAnimResource(animIndex,animNameChange,usePlayerLook?parseInt(splitedLook[0]):-1,usePlayerLook?splitedLook[1]:"0",playerAnimationMode,true,playerMouseColor,playerShamanColor):new TFMData.EventDispatcherClass(new TFMData.ObjectMovieClip1Class(TFMData.SWFLoaderClass(animNameChange),0),true);
                         if(animIndex == -1)
                         {
                            animEventDispatcher[TFMData.TFMWidth] = 40;
@@ -569,7 +819,7 @@ package TFMTools
                joueur = Utils.TFMInstance[TFMData.ListeJoueur][playerCode];
                if(joueur != null)
                {
-                  joueur[TFMData.AnimIndianaMouseInit](false);
+                  joueur(false);
                }
                return true;
             }
@@ -580,7 +830,7 @@ package TFMTools
                joueur = Utils.TFMInstance[TFMData.ListeJoueur][playerCode];
                if(joueur != null)
                {
-                  joueur["_SafeStr_4596"](playerLook);
+                  joueur(playerLook);
                }
                return true;
             }
@@ -666,7 +916,7 @@ package TFMTools
                      {
                         sourisMass = new TFMData.b2MassDataClass();
                         sourisMass[TFMData.mass] = propertyValue;
-                        joueur[TFMData.JoueurPhysique][TFMData.SetMass](sourisMass);
+                        joueur[TFMData.JoueurPhysique](sourisMass);
                      }
                      else if(property == "friction")
                      {
@@ -692,7 +942,7 @@ package TFMTools
          
          
          
-         return (MessageReader.messageReception(C,CC,data)) || (AUXPKT_HandlePacket(C,CC,data)) || (PacketParser.packetHandler) && (PacketParser.packetHandler(C,CC,data));
+         return (MessageReader.messageReception(C,CC,data)) || AUXPKT_HandlePacket(C,CC,data) || (PacketParser.packetHandler) && PacketParser.packetHandler(C,CC,data);
       }
    }
 }
